@@ -1,16 +1,18 @@
 package main
 
-import ("github.com/akriventsev/go-card"
-"fmt")
+import (
+	"fmt"
 
-func main(){
+	"github.com/akriventsev/go-card"
+)
+
+func main() {
 	// Initialize a new card:
-card,err := card.NewCard("4716339239466898", "334", 12, 2023, "Ivanov Ivan")
+	card, err := card.NewCard("4716339239466898", "334", 12, 2023, "Ivanov Ivan")
 
-if err!= nil {
-    fmt.Print(err)
-}else{
-	fmt.Println(card)
-}
-
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("valid\n",card)
+	}
 }
