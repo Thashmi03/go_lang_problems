@@ -7,7 +7,10 @@ type node struct {
 	data int
 	next *node
 }
-var head *node=nil
+
+var head *node = nil
+var tail *node = nil
+
 func create(val int) *node {
 	var n node
 	n.data = val
@@ -15,41 +18,66 @@ func create(val int) *node {
 	n.next = nil
 	return &n
 }
-func insertbg(val int){
+func insertf(val int) {
 	n := create(val)
-	if(head==nil){
-		head=n
-	}else{
-		n.next=head
-		head.prev=n
-		head =n
+	if head == nil {
+		head = n
+		tail = n
+	} else {
+		n.next = head
+		head.prev = n
+		head = n
 	}
 }
-func deletef(){
-	if head==nil{
+func insertend(val int) {
+	n := create(val)
+	if tail == nil {
+		tail = n
+	} else {
+		tail.next = n
+		n.prev = tail
+		tail = n
+	}
+}
+func deletef() {
+	if head == nil {
 		return
 	}
-	if head .next == nil{
-		head=nil
-		println("nill")
-	}else{
-		head=head.next
-		head.prev=nil
+	if head.next == nil {
+		head = nil
+		println("nil")
+	} else {
+		head = head.next
+		head.prev = nil
 	}
-	
+
 }
-func displayf(){
-	for temp := head;temp != nil;temp = temp.next{
-	   fmt.Printf("%d ", temp.data)
+
+func deleteend() {
+	if tail == nil {
+		return
+	}
+	if tail.prev == nil {
+		tail = nil
+		println("nil")
+	} else {
+		tail = tail.prev
+		tail.next = nil
+	}
+}
+func displayf() {
+	for temp := head; temp != nil; temp = temp.next {
+		fmt.Printf("%d ", temp.data)
 	}
 	fmt.Println()
- }
-
+}
 
 func main() {
-	insertbg(10)
-	insertbg(20)
-	deletef()
+	insertf(10)
+	insertf(20)
+	insertend(30)
+	insertend(40)
+	deleteend()
 	deletef()
 	displayf()
 }
