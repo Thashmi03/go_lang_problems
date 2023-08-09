@@ -11,26 +11,26 @@ type node struct {
 var head *node = nil
 var tail *node = nil
 
-func create(val int) *node {
-	var n node
+func (n *node) create(val int) *node {
+
 	n.data = val
 	n.prev = nil
 	n.next = nil
-	return &n
+	return n
 }
-func insertf(val int) {
-	n := create(val)
+func (n *node) insertf(val int) {
+	na := n.create(val)
 	if head == nil {
-		head = n
-		tail = n
+		head = na
+		tail = na
 	} else {
-		n.next = head
-		head.prev = n
-		head = n
+		na.next = head
+		head.prev = na
+		head = na
 	}
 }
-func insertend(val int) {
-	n := create(val)
+func (i *node) insertend(val int) {
+	n := i.create(val)
 	if tail == nil {
 		tail = n
 	} else {
@@ -39,7 +39,7 @@ func insertend(val int) {
 		tail = n
 	}
 }
-func deletef() {
+func (i *node) deletef() {
 	if head == nil {
 		return
 	}
@@ -53,7 +53,7 @@ func deletef() {
 
 }
 
-func deleteend() {
+func (i *node) deleteend() {
 	if tail == nil {
 		return
 	}
@@ -65,7 +65,7 @@ func deleteend() {
 		tail.next = nil
 	}
 }
-func displayf() {
+func (i *node) displayf() {
 	for temp := head; temp != nil; temp = temp.next {
 		fmt.Printf("%d ", temp.data)
 	}
@@ -73,11 +73,12 @@ func displayf() {
 }
 
 func main() {
-	insertf(10)
-	insertf(20)
-	insertend(30)
-	insertend(40)
-	deleteend()
-	deletef()
-	displayf()
+	a := node{}
+	a.insertf(10)
+	a.insertf(20)
+	a.insertend(30)
+	a.insertend(40)
+	a.deleteend()
+	a.deletef()
+	a.displayf()
 }
