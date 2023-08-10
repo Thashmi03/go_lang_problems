@@ -17,11 +17,7 @@ func (n *nodet) insert(root *nodet, val int) *nodet {
 		fmt.Println("the element is inserted", val)
 		return &new
 	}
-	if val < root.data {
-		root.left = n.insert(root.left, val)
-	} else {
-		root.right = n.insert(root.right, val)
-	}
+	
 	return root
 }
 func (n *nodet) search(root *nodet, val int) *nodet {
